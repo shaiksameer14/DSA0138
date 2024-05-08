@@ -1,0 +1,119 @@
+1. make a class named fruit with a data members to calculate the number of fruits in a basket
+answer:
+#include <iostream>
+#include <vector>
+#include <string>
+
+int main() {
+    std::vector<std::string> fruitBasket = {"Apple", "Banana", "Orange", "Grapes"};
+
+    for (const auto& fruit : fruitBasket) {
+        std::cout << fruit << std::endl;
+    }
+
+    return 0;
+}
+2.create a class to print the area of a square and a rectangle the class has two functions with same name but different number of parameters.
+answer:
+#include <iostream>
+
+class AreaCalculator {
+public:
+    void calculateArea(int side) {
+        std::cout << "Area of Square: " << side * side << std::endl;
+    }
+
+    void calculateArea(int length, int width) {
+        std::cout << "Area of Rectangle: " << length * width << std::endl;
+    }
+};
+
+int main() {
+    AreaCalculator calculator;
+    calculator.calculateArea(5); // Calculate area of a square with side 5
+    calculator.calculateArea(4, 6); // Calculate area of a rectangle with length 4 and width 6
+
+    return 0;
+}
+3.we want to calculate the total marks of each student of a class in physics chemistry and mathamatics and the avargae mark of the class are enterd by the user 
+create a class named by marks with data members for roll number name and marks
+answer:
+#include <iostream>
+#include <string>
+
+class Marks {
+public:
+    int rollNumber;
+    std::string name;
+    float physicsMarks;
+    float chemistryMarks;
+    float mathematicsMarks;
+};
+
+int main() {
+    Marks student1;
+    student1.rollNumber = 1;
+    student1.name = "Alice";
+    student1.physicsMarks = 85.5;
+    student1.chemistryMarks = 90.0;
+    student1.mathematicsMarks = 88.0;
+
+    Marks student2;
+    student2.rollNumber = 2;
+    student2.name = "Bob";
+    student2.physicsMarks = 78.0;
+    student2.chemistryMarks = 85.5;
+    student2.mathematicsMarks = 80.5;
+
+    // Add more students and their marks here
+
+    return 0;
+}
+4.create a class called float contains one float data remember overload all 4 arthamatic operators
+so that they operate one the object of float 
+answer :
+C++ Class Overloading Arithmetic Operators
+language-cpp
+ Copy code
+#include <iostream>
+
+class Float {
+private:
+    float data;
+public:
+    Float(float value) : data(value) {}
+
+    Float operator+(const Float& other) {
+        return Float(this->data + other.data);
+    }
+
+    Float operator-(const Float& other) {
+        return Float(this->data - other.data);
+    }
+
+    Float operator*(const Float& other) {
+        return Float(this->data * other.data);
+    }
+
+    Float operator/(const Float& other) {
+        if (other.data != 0) {
+            return Float(this->data / other.data);
+        }
+        else {
+            std::cerr << "Error: Division by zero!" << std::endl;
+            return Float(0.0);
+        }
+    }
+};
+
+int main() {
+    Float num1(10.5);
+    Float num2(5.0);
+
+    Float sum = num1 + num2;
+    Float difference = num1 - num2;
+    Float product = num1 * num2;
+    Float quotient = num1 / num2;
+
+    return 0;
+}
