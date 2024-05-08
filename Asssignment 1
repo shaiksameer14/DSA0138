@@ -1,0 +1,103 @@
+1.write a c++ program that reads an integer an and print the least significant digit and the next least significant digit 
+Answer:
+#include <iostream>
+
+int main() {
+    int num;
+    std::cout << "Enter an integer: ";
+    std::cin >> num;
+
+    int least_significant = num % 10;
+    int next_least_significant = (num / 10) % 10;
+
+    std::cout << "Least Significant Digit: " << least_significant << std::endl;
+    std::cout << "Next Least Significant Digit: " << next_least_significant << std::endl;
+
+    return 0;
+}
+2. given an array A[] of n number and another number x the task is to check wheather or not
+there exist two elemet in A[]who sum is exactly x
+#include <iostream>
+#include <unordered_set>
+
+bool checkSumExists(int A[], int n, int x) {
+    std::unordered_set<int> s;
+    for (int i = 0; i < n; i++) {
+        if (s.find(x - A[i]) != s.end()) {
+            return true;
+        }
+        s.insert(A[i]);
+    }
+    return false;
+}
+
+int main() {
+    int A[] = {1, 4, 45, 6, 10, -8};
+    int n = sizeof(A) / sizeof(A[0]);
+    int x = 16;
+
+    if (checkSumExists(A, n, x)) {
+        std::cout << "Sum exists";
+    } else {
+        std::cout << "Sum does not exist";
+    }
+
+    return 0;
+}
+3.write a c++ program to find the smallest elements missing sorted natural numbers array?
+Answer:
+#include <iostream>
+using namespace std;
+
+int findSmallestMissing(int arr[], int size) {
+    int left = 0, right = size - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] != mid + 1 && (mid == 0 || arr[mid - 1] == mid)) {
+            return mid + 1;
+        }
+        if (arr[mid] == mid + 1) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 7, 8, 9, 10};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int missing = findSmallestMissing(arr, size);
+    if (missing != -1) {
+        cout << "The smallest missing element is: " << missing << endl;
+    } else {
+        cout << "No missing elements in the array." << endl;
+    }
+    return 0;
+}
+4. student in c++
+Answer:
+#include <iostream>
+#include <string>
+
+class Student {
+public:
+    std::string name;
+    int id;
+    
+    void display() {
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "ID: " << id << std::endl;
+    }
+};
+
+int main() {
+    Student student;
+    student.name = "Alice";
+    student.id = 1001;
+    
+    student.display();
+    
+    return 0;
+}
