@@ -1,0 +1,153 @@
+QUESTION: 1
+You are given a class - Complex.
+class Complex
+{
+public:
+    int a,b;
+};
+
+Operators are overloaded by means of operator functions, which are regular 
+functions with special names. Their name begins with the operator keyword 
+followed by the operator sign that is overloaded. The syntax is: 
+type operator sign (parameters) { /*... body ...*/ }
+You need to overload operators + and << for the Complex class. 
+
+The operator + should add complex numbers according to the rules of complex addition:
+(a+ib)+(c+id) = (a+c) + i(b+d)  
+
+Overload the stream insertion operator << to add "a+ib" to the stream: cout<< c << endl; 
+ANSWER :
+#include <iostream>
+#include <string>
+
+class Complex {
+public:
+    int a, b;
+
+    Complex operator+(const Complex& other) const {
+        Complex result;
+        result.a = a + other.a;
+        result.b = b + other.b;
+        return result;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Complex& c) {
+        if (c.b >= 0) {
+            os << c.a << "+" << c.b << "i";
+        } else {
+            os << c.a << c.b << "i";
+        }
+        return os;
+    }
+};
+
+int main() {
+    Complex c1, c2;
+    c1.a = 1; c1.b = 2;
+    c2.a = 3; c2.b = 4;
+
+    Complex sum = c1 + c2;
+    std::cout << sum << std::endl;
+
+    return 0;
+}
+QUESTION 2:
+Write the code to implement the concept of inheritance for Vehicles. You are 
+required to implement inheritance between classes. You have to write four 
+classes in C++ i.e. one superclass, two sub classes and one driver class. 
+Vehicle is the super class whereas Bus and Truck are sub classes of Vehicle 
+class. Transport is a driver class which contains main method.
+
+Detailed description:
+Detailed description of Vehicle (Super class):
+
+The class Vehicle must have following attributes:
+1.Vehicle model
+2.Registration number
+3.Vehicle speed (km/hour) 
+4.Fuel capacity (liters) 
+5.Fuel consumption (kiloM) 
+
+The Vehicle class must have following methods:
+1.Parameterized constructor that will initialize all the datamembers with the given values.
+ 
+2.Getters and Setters for each data member that will get and setthe values of data members of class. 
+
+3.A method fuelNeeded() that will takedistance (in kilo meter) as an 
+argument.It will calculate the amount of fuel needed for the given distance and 
+will return the value of fuel needed for given distance. You can use the 
+attributes ‘Fuel consumption’defined within above Vehicle class to determine 
+the fuel needed forthe given distance. You are required to implement this 
+functionality by yourself.
+
+4.A method distanceCovered() that willtake time (in hours) as an argument. It 
+will calculate the distance for the given time and speed and returns the value 
+of distance. The formula to calculate speed is given as speed = distance/time. 
+You can use this formula to calculate the distance.
+
+5.A display() method that will display all the information of a vehicle.
+
+Derive 2 classes Bus and Truck from Vehicle class
+
+ANSWER:
+#include <iostream>
+using namespace std;
+class Vehicle {
+protected:
+    string model;
+    string regNumber;
+    double speed;
+    double fuelCapacity;
+    double fuelConsumption;
+public:
+    Vehicle(string m, string reg, double s, double fc, double f) : model(m), regNumber(reg), speed(s), fuelCapacity(fc), fuelConsumption(f) {}
+    void setModel(string m) { model = m; }
+    string getModel() { return model; }
+    void setRegNumber(string reg) { regNumber = reg; }
+    string getRegNumber() { return regNumber; }
+    void setSpeed(double s) { speed = s; }
+    double getSpeed() { return speed; }
+    void setFuelCapacity(double fc) { fuelCapacity = fc; }
+    double getFuelCapacity() { return fuelCapacity; }
+    void setFuelConsumption(double f) { fuelConsumption = f; }
+    double getFuelConsumption() { return fuelConsumption; }
+    double fuelNeeded(double distance) {
+        return distance * fuelConsumption;
+    }
+    double distanceCovered(double time) {
+        return speed * time;
+    }
+    void display() {
+        cout << "Model: " << model << endl;
+        cout << "Registration Number: " << regNumber << endl;
+        cout << "Speed: " << speed << " km/h" << endl;
+        cout << "Fuel Capacity: " << fuelCapacity << " liters" << endl;
+        cout << "Fuel Consumption: " << fuelConsumption << " km/l" << endl;
+    }
+};
+class Bus : public Vehicle {
+public:
+    Bus(string m, string reg, double s, double fc, double f) : Vehicle(m, reg, s, fc, f) {}
+};
+class Truck : public Vehicle {
+public:
+    Truck(string m, string reg, double s, double fc, double f) : Vehicle(m, reg, s, fc, f) {}
+};
+
+class Transport {
+public:
+    static void main() {
+        Bus myBus("Volvo", "1234", 60, 100, 0.5);
+        Truck myTruck("Scania", "5678", 80, 150, 0.8);
+        myBus.display();
+        cout << "Fuel needed for 200 km: " << myBus.fuelNeeded(200) << " liters" << endl;
+        cout << "Distance covered in 3 hours: " << myBus.distanceCovered(3) << " km" << endl;
+        myTruck.display();
+        cout << "Fuel needed for 300 km: " << myTruck.fuelNeeded(300) << " liters" << endl;
+        cout << "Distance covered in 4 hours: " << myTruck.distanceCovered(4) << " km" << endl;
+    }
+};
+int main() {
+    Transport::main();
+    return 0;
+}
