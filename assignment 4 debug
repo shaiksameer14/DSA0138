@@ -1,0 +1,108 @@
+1.
+#include 
+using namespace std;
+
+int main() {
+    int arr[5]; 
+    for (int i = 0; i < 5; ++i) {
+        arr[i] = i;
+    }
+    for (int i = 0; i < 5; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+answer:
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[5]; 
+    for (int i = 0; i < 5; ++i) {
+        arr[i] = i;
+    }
+    for (int i = 0; i < 5; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+2.
+#include
+using namespace std;
+
+int add(int x, int y) {
+    return x + y;
+}
+
+int main() {
+    cout << add(5, 3) << endl; 
+    return 0;
+}
+answer:
+#include <iostream>
+using namespace std;
+
+int add(int x, int y) {
+    return x + y;
+}
+
+int main() {
+    cout << add(5, 3) << endl; 
+    return 0;
+}
+3.
+#include 
+using namespace std;
+
+int main() {
+    int sum = 0;
+    for (int i = 0; i < 5; ++i) {
+        sum += i * i; 
+    }
+    cout << "Sum: " << sum << endl;
+    return 0;
+}
+answer:
+#include <iostream>
+using namespace std;
+
+int main() {
+    int sum = 0;
+    for (int i = 0; i < 5; ++i) {
+        sum += i * i; 
+    }
+    cout << "Sum: " << sum << endl;
+    return 0;
+}
+4.
+#include 
+using namespace std;
+
+int main() {
+    int arr[5]; 
+    for (int i = 0; i < 5; ++i) {
+        arr[i] = i;
+    }
+    for (int i = 0; i < 5; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+answer:
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[5]; 
+    for (int i = 0; i < 5; ++i) {
+        arr[i] = i;
+    }
+    for (int i = 0; i < 5; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
